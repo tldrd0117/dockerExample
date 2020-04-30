@@ -1,5 +1,5 @@
 
-##Dockerfile
+## Dockerfile
 위치: node-bulletin-board/bulletin-board-app/Dockerfile
 ```dockerfile
 # Use the official image as a parent image.
@@ -30,3 +30,23 @@ CMD [ "npm", "start" ]
 # 앱 소스코드를 호스트에서 이미지 파일 시스템으로 카피한다.
 COPY . .
 ```
+## build
+```dos
+docker build --tag bulletinboard:1.0 .
+```
+## run
+```dos
+docker run --publish 8000:8080 --detach --name bb bulletinboard:1.0
+```
+- --publish 8000:8080 : host의 포트 8000이 container의 8080과 연결된다 이렇게 설정하지 않으면 방화벽에 막힌다
+- --detach : 백그라운드에서 실행하는지
+- --name : 참조할 이름
+
+## delete
+```dos
+docker rm --force bb
+```
+
+
+
+
